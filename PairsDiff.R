@@ -31,7 +31,7 @@ PairsDiff <- function(directory, tsv, plink, pat){
   # Load custom function
   source(paste0(WD,"/bin/LociAllele_error.R"))
   
-  # Run funtion to get allele and loci error rates
+  # Run function to get allele and loci error rates
   repliDiff<-LociAllele_error(mat=final, param=param)  
   repliDiff
   
