@@ -82,7 +82,7 @@ LociAllele_error <- function(mat, param){
   samps <- match(sub("_r|_ir","",reps),samples) # match against its sample (ie names w/o _r or _ir)
   samps<- samples[samps] # get names
   pairs<-cbind(reps,samps) # put them side by side 
-  pairs<- pairs[rowSums(is.na(pairs)) < 1,] # remove rows that cointain NA to get only succesful replicate-sample pairs
+  pairs<- pairs[rowSums(is.na(pairs)) < 1,] # remove rows that contain NA to get only succesful replicate-sample pairs
   npairs <-nrow(data.frame(pairs))
   
   #### 2) Estimate loci, allele and error.rate  differences between each replicate pair
@@ -100,7 +100,7 @@ LociAllele_error <- function(mat, param){
     
     ### Estimate LOCI differences between each replicate pair  
     
-    # estimate  number of loci and and missing loci (NAs)
+    # estimate number of loci and and missing loci (NAs)
     nloci <- nLoc(srpair) # number of total loci
     NAs<-NA.posi(srpair) # position of NAs in the sample-replicate pair
     
@@ -112,7 +112,7 @@ LociAllele_error <- function(mat, param){
     r<- NAs[2] # NAs in replicate
     r<- r[[1]]
     
-    # Find total missing loci between s and r togheter
+    # Find total missing loci between s and r together
     nMissLoc <- length(union(s,r))
     nMissLoc
     
@@ -179,7 +179,7 @@ LociAllele_error <- function(mat, param){
     ## Estimate the allele error rate as the number of allele mismatches over the number of loci compared 
     allele.error.rate <- allele.mismatches/n.loci.woNA
     
-    ###### Put all B) results toghether by sample-replicate pair
+    ###### Put all B) results together by sample-replicate pair
     pair <- paste(indNames(srpair)[2],"-",indNames(srpair)[1], sep="") # to generate a name for the pair
     x<-cbind(param, pair, nloci, nMissLoc, MissTotProp, shareMissLoc, loci.mismatches, unshareMissLoc, loci.error.rate, n.loci.woNA, allele.mismatches, allele.error.rate)
     
